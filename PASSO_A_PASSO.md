@@ -80,7 +80,7 @@ Rscript scripts/analise_maftools.R resultados/09_maf/coorte.maf
 ```
 
 - **Etapa 9** gera o MAF em `resultados/09_maf/coorte.maf`. Se aparecer “não tem a anotação CSQ”, o download não foi no formato VCF.
-- **Etapa 10** gera as figuras em `resultados/10_maftools/` (01 a 07).
+- **Etapa 10** gera as figuras em `resultados/10_maftools/` (01 a 07). Regra: gnomAD AF ≥ 1% = polimorfismo comum; as figuras 03–07 usam só as variantes raras (AF < 1% ou ausentes do gnomAD). Aqui ficaram 24 comuns (menor AF 30,9%) e 6 raras (maior AF 0,0008%).
 
 Conferência:
 
