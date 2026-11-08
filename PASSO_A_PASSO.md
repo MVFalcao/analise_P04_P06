@@ -4,7 +4,7 @@
 
 ## Visão geral
 
-Rodei o pipeline de variantes da aula (IEC – PUC Minas) só para os pacientes **P04** e **P06**. As etapas 1–7c e 9–10 estão prontas; a etapa 8 (VEP no site) foi enviada e aguarda o download do resultado.
+Rodei o pipeline de variantes da aula (IEC – PUC Minas) só para os pacientes **P04** e **P06**. Todas as etapas (1–10) estão prontas; a anotação da etapa 8 foi feita no site do VEP (v116) em 08/11/2026.
 
 - É uma cópia do repositório principal `aula-variantes-cancer`, feita em 05–06/11/2026. O repositório principal não foi alterado.
 - Ferramentas no ambiente micromamba `aula-variantes`.
@@ -68,11 +68,11 @@ Opções usadas no envio:
 3. Renomear para `coorte_anotada_VEP.vcf`.
 4. Mover para `resultados/08_para_o_VEP/`, substituindo o arquivo do Plano B.
 
-A nova interface não mostrou uma opção de “uma consequência por variante”. Isso será conferido no arquivo baixado.
+A nova interface não tem a opção “uma consequência por variante”: o arquivo traz todos os transcritos, e o script da etapa 9 escolhe a consequência mais grave. A frequência veio no campo gnomAD_exomes_AF, que foi adicionado à lista do script.
 
 ## Etapas 9–10: MAF e maftools
 
-Já rodaram com a anotação do Plano B. Serão rodadas de novo com o arquivo do VEP:
+Rodadas em 08/11/2026 com o arquivo do VEP: 30 variantes em 2 amostras, frequência tirada do campo gnomAD_exomes_AF.
 
 ```bash
 bash scripts/vcf_para_maf.sh resultados/08_para_o_VEP/coorte_anotada_VEP.vcf resultados/09_maf/coorte.maf
@@ -88,9 +88,16 @@ Conferência:
 - A coluna gnomAD_AF deve vir preenchida (o script procura gnomADe_AF, gnomAD_AF, gnomADg_AF, MAX_AF ou AF).
 - As variantes raras devem ser as mesmas da tabela abaixo. Se mudarem, comparar com o Plano B: a versão do VEP/gnomAD no site pode ter mudado.
 
+**Comparação com o Plano B**
+
+- As 6 variantes raras são as mesmas, com a mesma classificação.
+- 28 das 30 variantes são idênticas. Em dois polimorfismos comuns do BRCA1, o script pegou um transcrito curto: aparecem como p.S294= e p.S471G, em vez de p.S1436= e p.S1613G.
+- A coluna dbSNP_RS ficou vazia: o site colocou o rs no campo do gnomAD, não em Existing_variation.
+- Os resultados do Plano B foram guardados em `resultados/plano_b_backup/` (fora do GitHub).
+
 ## Resultados esperados por paciente
 
-Com o Plano B, cada paciente tem 15 variantes; o MAF tem 30 no total, a maioria polimorfismos comuns (gnomAD AF ≥ 1%).
+Com o VEP do site (igual ao Plano B), cada paciente tem 15 variantes; o MAF tem 30 no total, a maioria polimorfismos comuns (gnomAD AF ≥ 1%).
 
 | | P04 | P06 |
 | --- | --- | --- |

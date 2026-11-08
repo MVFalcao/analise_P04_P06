@@ -40,7 +40,7 @@ for obrig in SYMBOL Consequence; do
     tem "$obrig" || { echo "ERRO: o campo '$obrig' não está no CSQ do VEP." >&2; exit 1; }
 done
 FREQ="."
-for f in gnomADe_AF gnomAD_AF gnomADg_AF MAX_AF AF; do
+for f in gnomADe_AF gnomAD_exomes_AF gnomAD_AF gnomADg_AF gnomAD_genomes_AF MAX_AF AF; do
     if tem "$f"; then FREQ="%$f"; NOME_FREQ="$f"; break; fi
 done
 [ "$FREQ" = "." ] && echo "AVISO: nenhuma frequência populacional (gnomAD) no CSQ — a coluna gnomAD_AF ficará vazia." >&2
