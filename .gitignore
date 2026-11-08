@@ -6,3 +6,4 @@ resultados/*
 !resultados/resumo_qc.tsv
 !resultados/09_maf/
 !resultados/10_maftools/
+!resultados/10_python/

@@ -95,6 +95,34 @@ Conferência:
 - A coluna dbSNP_RS ficou vazia: o site colocou o rs no campo do gnomAD, não em Existing_variation.
 - Os resultados do Plano B foram guardados em `resultados/plano_b_backup/` (fora do GitHub).
 
+## Etapa 10 em Python, com figuras para leitura clínica
+
+`scripts/analise_variantes.py` refaz as 7 figuras do maftools em Python e acrescenta 3 figuras pensadas para médicos. Usa o mesmo corte (gnomAD AF ≥ 1% = comum) e encontra as mesmas 6 variantes raras.
+
+```bash
+/usr/bin/python3 scripts/analise_variantes.py resultados/09_maf/coorte.maf
+```
+
+Usa o Python do sistema: o Python 3.15 do ambiente `aula-variantes` ainda não tem pandas. As figuras ficam em `resultados/10_python/`.
+
+| Figura | O que mostra |
+| --- | --- |
+| 01 / 03 | Resumo de todas / das raras: classes, tipos, SNVs, variantes por paciente, genes |
+| 02 / 04 / 05 | Oncoplot (gene × paciente) com a alteração escrita na célula e trilhas de tipo tumoral, idade e sexo |
+| 06 | Transições/transversões (controle de qualidade) |
+| 07 | Lollipop do TP53 com os domínios da proteína |
+| 08 (nova) | Ficha por paciente: clínica, variantes raras, papel de cada gene e hipótese a investigar |
+| 09 (nova) | VAF no tumor × frequência no gnomAD, com o corte de 1% marcado |
+| 10 (nova) | Seguimento por paciente (meses e desfecho) |
+
+Ficha por paciente (figura 08):
+
+![Ficha por paciente](resultados/10_python/08_painel_por_paciente.png)
+
+VAF × gnomAD (figura 09):
+
+![VAF x gnomAD](resultados/10_python/09_vaf_vs_gnomad.png)
+
 ## Resultados esperados por paciente
 
 Com o VEP do site (igual ao Plano B), cada paciente tem 15 variantes; o MAF tem 30 no total, a maioria polimorfismos comuns (gnomAD AF ≥ 1%).
